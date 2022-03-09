@@ -38,7 +38,7 @@ class _SignInState extends State<SignIn> {
           padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/touch.png"), fit: BoxFit.cover),
+                image: AssetImage("assets/hello.png"), fit: BoxFit.cover),
           ),
           child: Form(
             key: _formKey,

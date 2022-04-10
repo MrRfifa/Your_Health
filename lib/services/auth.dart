@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:your_health/models/user.dart';
 import 'package:your_health/screens/authenticate/register.dart';
+import 'package:your_health/services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -49,6 +50,11 @@ class AuthService {
       UserCredential result = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       User user = result.user!;
+
+      //create a new document for the user with uid
+      await DatabaseService(uid: user.uid)
+          .updateUserData('first', 'user', 'yellow', 22);
+
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
